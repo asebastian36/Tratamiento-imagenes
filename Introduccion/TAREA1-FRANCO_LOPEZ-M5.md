@@ -1,5 +1,7 @@
 # Tarea 1
 
+Nombre: Franco Lopez Angel Sebastian Grupo: M5
+
 ## Definicion del paradigma orientado a objetos
 
 La programación orientada a objetos (OOP) es un paradigma de programación que modela los datos y el comportamiento de los objetos del mundo real. Un objeto es una entidad que tiene estado y comportamiento. El estado de un objeto es representado por sus atributos, mientras que el comportamiento de un objeto es representado por sus métodos.
@@ -8,13 +10,23 @@ OOP es un paradigma poderoso que permite a los programadores crear programas que
 
 Algunos de los beneficios de utilizar OOP incluyen:
 
-* Código más fácil de entender y mantener
-* Código más reutilizable
-* Código más flexible y extensible
-* Código más portable
-* Código más robusto y confiable
+* Código más fácil de entender y mantener.
+* Código más reutilizable.
+* Código más flexible y extensible.
+* Código más portable.
+* Código más robusto y confiable.
 
 OOP es un paradigma popular que se utiliza en una variedad de lenguajes de programación, incluyendo Java, C++, Python, y Ruby.
+
+información adicional sobre el paradigma orientado a objetos:
+
+* **Objetos:** Un objeto es una entidad que tiene estado y comportamiento. El estado de un objeto es representado por sus atributos, mientras que el comportamiento de un objeto es representado por sus métodos.
+* **Clases:** Una clase es un modelo para un objeto. Una clase define los atributos y métodos de un objeto.
+* **Herencia:** La herencia es la capacidad de una clase para heredar los atributos y métodos de otra clase. La herencia permite a los programadores crear clases más complejas a partir de clases más simples.
+* **Polimorfismo:** El polimorfismo es la capacidad de una función para tener diferentes implementaciones dependiendo del tipo de objeto al que se llama. El polimorfismo permite a los programadores escribir código más general que se puede utilizar con diferentes tipos de objetos.
+* **Encapsulamiento:** El encapsulamiento es la práctica de ocultar los detalles de implementación de un objeto de los usuarios del objeto. El encapsulamiento permite a los programadores proteger los datos de un objeto de ser modificados por usuarios no autorizados.
+
+OOP es un paradigma poderoso que permite a los programadores crear programas que sean más fáciles de entender, mantener y reutilizar. OOP también permite a los programadores crear programas más flexibles, extensibles, portátiles, robustos y confiables.
 
 ## Concepto de clase, objeto y constructor
 
