@@ -35,6 +35,7 @@ public class Principal extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         panelIzquierdo = new javax.swing.JPanel();
         panelDerecho = new javax.swing.JPanel();
+        labelImagen = new java.awt.Label();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -73,15 +74,23 @@ public class Principal extends javax.swing.JFrame {
 
         panelDerecho.setBackground(new java.awt.Color(204, 255, 204));
 
+        labelImagen.setText("label1");
+
         javax.swing.GroupLayout panelDerechoLayout = new javax.swing.GroupLayout(panelDerecho);
         panelDerecho.setLayout(panelDerechoLayout);
         panelDerechoLayout.setHorizontalGroup(
             panelDerechoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 283, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelDerechoLayout.createSequentialGroup()
+                .addContainerGap(124, Short.MAX_VALUE)
+                .addComponent(labelImagen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(121, 121, 121))
         );
         panelDerechoLayout.setVerticalGroup(
             panelDerechoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 326, Short.MAX_VALUE)
+            .addGroup(panelDerechoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(labelImagen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(296, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -202,6 +211,7 @@ public class Principal extends javax.swing.JFrame {
     public javax.swing.JMenuBar jMenuBar1;
     public javax.swing.JMenuItem jMenuItem1;
     public javax.swing.JPanel jPanel1;
+    public java.awt.Label labelImagen;
     public javax.swing.JPanel panelDerecho;
     public javax.swing.JPanel panelIzquierdo;
     // End of variables declaration//GEN-END:variables

@@ -3,6 +3,7 @@ package controlador;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import modelo.Imagen;
@@ -27,6 +28,7 @@ public class ControladorAplicacion implements ActionListener {
         if(e.getActionCommand().equals("Abrir imagen")) {
             System.out.println("Seleccionaste Abrir imagen");
             this.abrirImagen();
+            this.ventanaPrincipal.jLabel1.setIcon(new ImageIcon(this.imagenOriginal.getBufferImagen()));
         }
     }
     
