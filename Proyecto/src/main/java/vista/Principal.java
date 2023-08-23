@@ -120,13 +120,11 @@ public class Principal extends javax.swing.JFrame {
                 .addGap(58, 58, 58))
         );
 
-        jLabel1.getAccessibleContext().setAccessibleName("Presiona esta prieto-kun!!");
-
         jMenuBar1.setName("menuArchivo"); // NOI18N
 
         jMenu1.setLabel("Archivo");
 
-        jMenuItem1.setLabel("Abrir archivo");
+        jMenuItem1.setText("Abrir imagen");
         jMenuItem1.setName("menuItemAbrir"); // NOI18N
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

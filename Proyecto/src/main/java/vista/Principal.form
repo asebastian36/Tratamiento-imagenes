@@ -26,7 +26,7 @@
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem1">
               <Properties>
-                <Property name="label" type="java.lang.String" value="Abrir archivo"/>
+                <Property name="text" type="java.lang.String" value="Abrir imagen"/>
                 <Property name="name" type="java.lang.String" value="menuItemAbrir" noResource="true"/>
               </Properties>
               <Events>
@@ -155,9 +155,6 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Presiona esta prieto-kun!!"/>
           </Properties>
-          <AccessibilityProperties>
-            <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="Presiona esta prieto-kun!!"/>
-          </AccessibilityProperties>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
           </AuxValues>
