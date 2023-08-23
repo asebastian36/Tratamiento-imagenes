@@ -46,8 +46,6 @@ public class ControladorAplicacion implements ActionListener {
             
             System.out.println("Cantidad de columnas de la imagen recibida: " + this.imagenOriginal.getColumnas());
             System.out.println("Cantidad de filas de la imagen recibida: " + this.imagenOriginal.getFilas());
-            System.out.println("Este es un cambio minimo");
-
         }
     }
 }
