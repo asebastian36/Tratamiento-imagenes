@@ -69,6 +69,20 @@ public class Imagen {
         this.setMatrizB(tMatrizB);
     }
     
+    public BufferedImage convierteMatrizEnBuffered(short matrizGris[][]) {
+        short pixelNuevo;
+        int pixelSRGB;
+        for (int i = 0; i < this.bufferImagen.getWidth(); i++) {
+            for (int j = 0; j < this.bufferImagen.getHeight(); j++) {
+                pixelNuevo = matrizGris[i][j];
+                pixelSRGB = pixelNuevo << 16 | pixelNuevo << 8 | pixelNuevo;
+                this.bufferImagen.setRGB(i, j, pixelSRGB);
+            }
+        }
+        
+        return bufferImagen;
+    }
+    
     //  getters y setterss
     public String getNombre() {
         return nombre;

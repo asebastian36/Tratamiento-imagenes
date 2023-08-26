@@ -30,6 +30,8 @@ public class Principal extends javax.swing.JFrame {
     private void initComponents() {
 
         jCheckBoxMenuItem1 = new javax.swing.JCheckBoxMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
         jPanel1 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -38,14 +40,20 @@ public class Principal extends javax.swing.JFrame {
         labelImagen = new java.awt.Label();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
+        AgregarImagen = new javax.swing.JMenuItem();
+        ConvertirGrises = new javax.swing.JMenuItem();
 
         jCheckBoxMenuItem1.setSelected(true);
         jCheckBoxMenuItem1.setText("jCheckBoxMenuItem1");
 
+        jMenuItem2.setText("jMenuItem2");
+
+        jMenu2.setText("jMenu2");
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 204));
+        jPanel1.setMaximumSize(new java.awt.Dimension(3840, 2160));
 
         jButton1.setBackground(new java.awt.Color(255, 204, 204));
         jButton1.setForeground(new java.awt.Color(51, 51, 51));
@@ -57,7 +65,7 @@ public class Principal extends javax.swing.JFrame {
         });
 
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel1.setText("Presiona esta prieto-kun!!");
+        jLabel1.setText("Presiona esta Prieto-kun!!!!");
 
         panelIzquierdo.setBackground(new java.awt.Color(255, 153, 153));
 
@@ -74,6 +82,7 @@ public class Principal extends javax.swing.JFrame {
 
         panelDerecho.setBackground(new java.awt.Color(204, 255, 204));
 
+        labelImagen.setMaximumSize(new java.awt.Dimension(3840, 3840));
         labelImagen.setText("label1");
 
         javax.swing.GroupLayout panelDerechoLayout = new javax.swing.GroupLayout(panelDerecho);
@@ -105,15 +114,14 @@ public class Principal extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(panelDerecho, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(235, 235, 235)
-                                .addComponent(jLabel1))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(268, 268, 268)
-                                .addComponent(jButton1)))
-                        .addGap(0, 218, Short.MAX_VALUE)))
+                        .addGap(268, 268, 268)
+                        .addComponent(jButton1)
+                        .addGap(0, 247, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(216, 216, 216))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -133,14 +141,18 @@ public class Principal extends javax.swing.JFrame {
 
         jMenu1.setLabel("Archivo");
 
-        jMenuItem1.setText("Abrir imagen");
-        jMenuItem1.setName("menuItemAbrir"); // NOI18N
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        AgregarImagen.setText("Abrir imagen");
+        AgregarImagen.setName("menuItemAbrir"); // NOI18N
+        AgregarImagen.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                AgregarImagenActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem1);
+        jMenu1.add(AgregarImagen);
+
+        ConvertirGrises.setText("Convertir a escala de grises");
+        ConvertirGrises.setEnabled(false);
+        jMenu1.add(ConvertirGrises);
 
         jMenuBar1.add(jMenu1);
 
@@ -164,9 +176,9 @@ public class Principal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+    private void AgregarImagenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarImagenActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+    }//GEN-LAST:event_AgregarImagenActionPerformed
 
     /**
      * @param args the command line arguments
@@ -204,12 +216,15 @@ public class Principal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JMenuItem AgregarImagen;
+    public javax.swing.JMenuItem ConvertirGrises;
     public javax.swing.JButton jButton1;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
     public javax.swing.JLabel jLabel1;
     public javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
     public javax.swing.JMenuBar jMenuBar1;
-    public javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
     public javax.swing.JPanel jPanel1;
     public java.awt.Label labelImagen;
     public javax.swing.JPanel panelDerecho;
