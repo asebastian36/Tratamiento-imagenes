@@ -11,7 +11,7 @@ import javax.imageio.ImageIO;
  * @author angel
  */
 
-public class Imagen {
+public class Imagen implements Cloneable{
     //  Atributos de la clase:
     private String nombre;
     private String formato;
@@ -162,5 +162,17 @@ public class Imagen {
 
     public void setBufferImagen(BufferedImage bufferImagen) {
         this.bufferImagen = bufferImagen;
+    }
+    
+    public Imagen clone() {
+        Imagen copia = null;
+        
+        try {
+            copia = (Imagen) super.clone();
+        } catch (CloneNotSupportedException ex) {
+            ex.printStackTrace();
+        }
+        
+        return copia;
     }
 }
