@@ -8,6 +8,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import modelo.Imagen;
+import modelo.Operaciones;
 import vista.Principal;
 
 /**
@@ -20,11 +21,13 @@ public class ControladorAplicacion implements ActionListener {
     private Principal ventanaPrincipal;
     private Imagen imagenOriginal;
     private File archivoImagen;
+    private Imagen imagenProcesada;
 
     public ControladorAplicacion(Principal Ventana) {
         this.ventanaPrincipal = Ventana;
         this.ventanaPrincipal.AgregarImagen.addActionListener(this);
         this.ventanaPrincipal.ConvertirGrises.addActionListener(this);
+        this.ventanaPrincipal.rotar90Grados.addActionListener(this);
     }
 
     public void actionPerformed(ActionEvent e) {
@@ -42,9 +45,21 @@ public class ControladorAplicacion implements ActionListener {
         if (e.getActionCommand().equals("Convertir a escala de grises")) {
             System.out.println("Seleccionaste Convertir a escala de grises");
             //  como paso las matrices?
-            this.cargarGris(this.imagenOriginal.getMatrizR(), this.imagenOriginal.getMatrizG(), this.imagenOriginal.getMatrizB());
-            this.imagenOriginal.convierteMatrizEnBuffered(this.imagenOriginal.getMatrizR());
-            this.ventanaPrincipal.jLabel1.setIcon(new ImageIcon(this.imagenOriginal.getBufferImagen().getScaledInstance(100, 200, Image.SCALE_DEFAULT)));
+            imagenProcesada = this.imagenOriginal.clone();
+            this.cargarGris(this.imagenProcesada.getMatrizR(), this.imagenProcesada.getMatrizG(), this.imagenProcesada.getMatrizB());
+            this.imagenOriginal.convierteMatrizEnBuffered(this.imagenProcesada.getMatrizR());
+            this.ventanaPrincipal.jLabel1.setIcon(new ImageIcon(this.imagenProcesada.getBufferImagen()));
+            this.ventanaPrincipal.rotar90Grados.setEnabled(true);
+            this.ventanaPrincipal.rotar90Grados.setVisible(true);
+        }
+        
+        if (e.getActionCommand().equals("rotar90Grados")) {
+            System.out.println("Seleccionaste rotar90Grados");
+            imagenProcesada = this.imagenOriginal.clone();
+            Operaciones op = new Operaciones(imagenProcesada);
+            imagenProcesada.setMatrizGris(op.rotar90Grados(imagenProcesada.getMatrizGris()));
+            imagenProcesada.convierteMatrizEnBuffered(imagenProcesada.getMatrizGris());
+            this.ventanaPrincipal.jLabel1.setIcon(new ImageIcon(this.imagenProcesada.getBufferImagen()));
         }
     }
 
