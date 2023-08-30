@@ -28,6 +28,8 @@ public class ControladorAplicacion implements ActionListener {
         this.ventanaPrincipal.AgregarImagen.addActionListener(this);
         this.ventanaPrincipal.ConvertirGrises.addActionListener(this);
         this.ventanaPrincipal.rotar90Grados.addActionListener(this);
+        this.ventanaPrincipal.rotar180grados.addActionListener(this);
+        this.ventanaPrincipal.rotar270grados.addActionListener(this);
     }
 
     public void actionPerformed(ActionEvent e) {
@@ -49,15 +51,38 @@ public class ControladorAplicacion implements ActionListener {
             this.cargarGris(this.imagenProcesada.getMatrizR(), this.imagenProcesada.getMatrizG(), this.imagenProcesada.getMatrizB());
             this.imagenOriginal.convierteMatrizEnBuffered(this.imagenProcesada.getMatrizR());
             this.ventanaPrincipal.jLabel1.setIcon(new ImageIcon(this.imagenProcesada.getBufferImagen()));
+            
             this.ventanaPrincipal.rotar90Grados.setEnabled(true);
             this.ventanaPrincipal.rotar90Grados.setVisible(true);
+            this.ventanaPrincipal.rotar180grados.setEnabled(true);
+            this.ventanaPrincipal.rotar180grados.setVisible(true);
+            this.ventanaPrincipal.rotar270grados.setEnabled(true);
+            this.ventanaPrincipal.rotar270grados.setVisible(true);
         }
         
-        if (e.getActionCommand().equals("rotar90Grados")) {
-            System.out.println("Seleccionaste rotar90Grados");
+        if (e.getActionCommand().equals("rotar90grados")) {
+            System.out.println("Seleccionaste rotar90grados");
             imagenProcesada = this.imagenOriginal.clone();
             Operaciones op = new Operaciones(imagenProcesada);
             imagenProcesada.setMatrizGris(op.rotar90Grados(imagenProcesada.getMatrizGris()));
+            imagenProcesada.convierteMatrizEnBuffered(imagenProcesada.getMatrizGris());
+            this.ventanaPrincipal.jLabel1.setIcon(new ImageIcon(this.imagenProcesada.getBufferImagen()));
+        }
+        
+        if (e.getActionCommand().equals("rotar180grados")) {
+            System.out.println("Seleccionaste rotar180grados");
+            imagenProcesada = this.imagenOriginal.clone();
+            Operaciones op = new Operaciones(imagenProcesada);
+            imagenProcesada.setMatrizGris(op.rotar180Grados(imagenProcesada.getMatrizGris()));
+            imagenProcesada.convierteMatrizEnBuffered(imagenProcesada.getMatrizGris());
+            this.ventanaPrincipal.jLabel1.setIcon(new ImageIcon(this.imagenProcesada.getBufferImagen()));
+        }
+        
+        if (e.getActionCommand().equals("rotar270grados")) {
+            System.out.println("Seleccionaste rotar270grados");
+            imagenProcesada = this.imagenOriginal.clone();
+            Operaciones op = new Operaciones(imagenProcesada);
+            imagenProcesada.setMatrizGris(op.rotar270Grados(imagenProcesada.getMatrizGris()));
             imagenProcesada.convierteMatrizEnBuffered(imagenProcesada.getMatrizGris());
             this.ventanaPrincipal.jLabel1.setIcon(new ImageIcon(this.imagenProcesada.getBufferImagen()));
         }

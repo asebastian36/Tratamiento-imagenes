@@ -44,6 +44,8 @@ public class Principal extends javax.swing.JFrame {
         AgregarImagen = new javax.swing.JMenuItem();
         ConvertirGrises = new javax.swing.JMenuItem();
         rotar90Grados = new javax.swing.JMenuItem();
+        rotar180grados = new javax.swing.JMenuItem();
+        rotar270grados = new javax.swing.JMenuItem();
 
         jCheckBoxMenuItem1.setSelected(true);
         jCheckBoxMenuItem1.setText("jCheckBoxMenuItem1");
@@ -151,9 +153,17 @@ public class Principal extends javax.swing.JFrame {
         ConvertirGrises.setEnabled(false);
         jMenu1.add(ConvertirGrises);
 
-        rotar90Grados.setText("rotar90Grados");
+        rotar90Grados.setText("rotar90grados");
         rotar90Grados.setEnabled(false);
         jMenu1.add(rotar90Grados);
+
+        rotar180grados.setText("rotar180grados");
+        rotar180grados.setEnabled(false);
+        jMenu1.add(rotar180grados);
+
+        rotar270grados.setText("rotar270grados");
+        rotar270grados.setEnabled(false);
+        jMenu1.add(rotar270grados);
 
         jMenuBar1.add(jMenu1);
 
@@ -231,6 +241,8 @@ public class Principal extends javax.swing.JFrame {
     public java.awt.Label labelImagen;
     public javax.swing.JPanel panelDerecho;
     public javax.swing.JPanel panelIzquierdo;
+    public javax.swing.JMenuItem rotar180grados;
+    public javax.swing.JMenuItem rotar270grados;
     public javax.swing.JMenuItem rotar90Grados;
     // End of variables declaration//GEN-END:variables
 }

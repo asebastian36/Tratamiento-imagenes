@@ -65,7 +65,25 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="rotar90Grados">
               <Properties>
-                <Property name="text" type="java.lang.String" value="rotar90Grados"/>
+                <Property name="text" type="java.lang.String" value="rotar90grados"/>
+                <Property name="enabled" type="boolean" value="false"/>
+              </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+              </AuxValues>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="rotar180grados">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="rotar180grados"/>
+                <Property name="enabled" type="boolean" value="false"/>
+              </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+              </AuxValues>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="rotar270grados">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="rotar270grados"/>
                 <Property name="enabled" type="boolean" value="false"/>
               </Properties>
               <AuxValues>
