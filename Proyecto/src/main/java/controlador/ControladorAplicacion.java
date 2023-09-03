@@ -117,7 +117,7 @@ public class ControladorAplicacion implements ActionListener {
         if (e.getActionCommand().equals("Resta escalar")) {
             System.out.println("seleccionaste Resta escalar");
             
-            short numero = Short.parseShort(JOptionPane.showInputDialog("Introduce un valor para la suma escalar:"));
+            short numero = Short.parseShort(JOptionPane.showInputDialog("Introduce un valor para la resta escalar:"));
             imagenProcesada = this.imagenOriginal.clone();
             op = new Operaciones(imagenProcesada);
             imagenProcesada.setMatrizGris(op.restaEscalar(imagenProcesada.getMatrizGris(), numero));
