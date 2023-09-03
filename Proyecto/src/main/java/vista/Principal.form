@@ -26,6 +26,15 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
     </Container>
+    <Container class="javax.swing.JMenu" name="jMenu3">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="jMenu3"/>
+      </Properties>
+
+      <Layout class="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout">
+        <Property name="useNullLayout" type="boolean" value="true"/>
+      </Layout>
+    </Container>
     <Menu class="javax.swing.JMenuBar" name="jMenuBar1">
       <Properties>
         <Property name="name" type="java.lang.String" value="menuArchivo" noResource="true"/>
@@ -42,19 +51,30 @@
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
           </AuxValues>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="AgregarImagen">
+            <MenuItem class="javax.swing.JMenuItem" name="abrirImagen">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Abrir imagen"/>
                 <Property name="name" type="java.lang.String" value="menuItemAbrir" noResource="true"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AgregarImagenActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="abrirImagenActionPerformed"/>
               </Events>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
               </AuxValues>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="ConvertirGrises">
+          </SubComponents>
+        </Menu>
+        <Menu class="javax.swing.JMenu" name="menuOperaciones">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Operaciones"/>
+            <Property name="enabled" type="boolean" value="false"/>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+          </AuxValues>
+          <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="convertirGrises">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Convertir a escala de grises"/>
                 <Property name="enabled" type="boolean" value="false"/>
@@ -65,7 +85,7 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="rotar90Grados">
               <Properties>
-                <Property name="text" type="java.lang.String" value="rotar90grados"/>
+                <Property name="text" type="java.lang.String" value="Rotar 90 grados"/>
                 <Property name="enabled" type="boolean" value="false"/>
               </Properties>
               <AuxValues>
@@ -74,7 +94,7 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="rotar180grados">
               <Properties>
-                <Property name="text" type="java.lang.String" value="rotar180grados"/>
+                <Property name="text" type="java.lang.String" value="Rotar 180 grados"/>
                 <Property name="enabled" type="boolean" value="false"/>
               </Properties>
               <AuxValues>
@@ -83,8 +103,75 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="rotar270grados">
               <Properties>
-                <Property name="text" type="java.lang.String" value="rotar270grados"/>
+                <Property name="text" type="java.lang.String" value="Rotar 270 grados"/>
                 <Property name="enabled" type="boolean" value="false"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="rotar270gradosActionPerformed"/>
+              </Events>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+              </AuxValues>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="sumaEscalar">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Suma escalar"/>
+                <Property name="enabled" type="boolean" value="false"/>
+              </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+              </AuxValues>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="restaEscalar">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Resta escalar"/>
+                <Property name="enabled" type="boolean" value="false"/>
+              </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+              </AuxValues>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="traslacion">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Traslacion"/>
+                <Property name="enabled" type="boolean" value="false"/>
+              </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+              </AuxValues>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="reflejarEjeX">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Reflejar eje x"/>
+                <Property name="enabled" type="boolean" value="false"/>
+              </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+              </AuxValues>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="reflejarEjeY">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Reflejar eje y"/>
+                <Property name="enabled" type="boolean" value="false"/>
+              </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+              </AuxValues>
+            </MenuItem>
+          </SubComponents>
+        </Menu>
+        <Menu class="javax.swing.JMenu" name="menuVer">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Ver"/>
+            <Property name="enabled" type="boolean" value="false"/>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+          </AuxValues>
+          <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="verOriginal">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Ver original"/>
               </Properties>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>

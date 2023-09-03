@@ -33,6 +33,7 @@ public class Principal extends javax.swing.JFrame {
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jScrollPane1 = new javax.swing.JScrollPane();
+        jMenu3 = new javax.swing.JMenu();
         jPanel1 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -41,11 +42,19 @@ public class Principal extends javax.swing.JFrame {
         labelImagen = new java.awt.Label();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
-        AgregarImagen = new javax.swing.JMenuItem();
-        ConvertirGrises = new javax.swing.JMenuItem();
+        abrirImagen = new javax.swing.JMenuItem();
+        menuOperaciones = new javax.swing.JMenu();
+        convertirGrises = new javax.swing.JMenuItem();
         rotar90Grados = new javax.swing.JMenuItem();
         rotar180grados = new javax.swing.JMenuItem();
         rotar270grados = new javax.swing.JMenuItem();
+        sumaEscalar = new javax.swing.JMenuItem();
+        restaEscalar = new javax.swing.JMenuItem();
+        traslacion = new javax.swing.JMenuItem();
+        reflejarEjeX = new javax.swing.JMenuItem();
+        reflejarEjeY = new javax.swing.JMenuItem();
+        menuVer = new javax.swing.JMenu();
+        verOriginal = new javax.swing.JMenuItem();
 
         jCheckBoxMenuItem1.setSelected(true);
         jCheckBoxMenuItem1.setText("jCheckBoxMenuItem1");
@@ -53,6 +62,8 @@ public class Principal extends javax.swing.JFrame {
         jMenuItem2.setText("jMenuItem2");
 
         jMenu2.setText("jMenu2");
+
+        jMenu3.setText("jMenu3");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -140,32 +151,70 @@ public class Principal extends javax.swing.JFrame {
 
         jMenu1.setLabel("Archivo");
 
-        AgregarImagen.setText("Abrir imagen");
-        AgregarImagen.setName("menuItemAbrir"); // NOI18N
-        AgregarImagen.addActionListener(new java.awt.event.ActionListener() {
+        abrirImagen.setText("Abrir imagen");
+        abrirImagen.setName("menuItemAbrir"); // NOI18N
+        abrirImagen.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AgregarImagenActionPerformed(evt);
+                abrirImagenActionPerformed(evt);
             }
         });
-        jMenu1.add(AgregarImagen);
-
-        ConvertirGrises.setText("Convertir a escala de grises");
-        ConvertirGrises.setEnabled(false);
-        jMenu1.add(ConvertirGrises);
-
-        rotar90Grados.setText("rotar90grados");
-        rotar90Grados.setEnabled(false);
-        jMenu1.add(rotar90Grados);
-
-        rotar180grados.setText("rotar180grados");
-        rotar180grados.setEnabled(false);
-        jMenu1.add(rotar180grados);
-
-        rotar270grados.setText("rotar270grados");
-        rotar270grados.setEnabled(false);
-        jMenu1.add(rotar270grados);
+        jMenu1.add(abrirImagen);
 
         jMenuBar1.add(jMenu1);
+
+        menuOperaciones.setText("Operaciones");
+        menuOperaciones.setEnabled(false);
+
+        convertirGrises.setText("Convertir a escala de grises");
+        convertirGrises.setEnabled(false);
+        menuOperaciones.add(convertirGrises);
+
+        rotar90Grados.setText("Rotar 90 grados");
+        rotar90Grados.setEnabled(false);
+        menuOperaciones.add(rotar90Grados);
+
+        rotar180grados.setText("Rotar 180 grados");
+        rotar180grados.setEnabled(false);
+        menuOperaciones.add(rotar180grados);
+
+        rotar270grados.setText("Rotar 270 grados");
+        rotar270grados.setEnabled(false);
+        rotar270grados.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rotar270gradosActionPerformed(evt);
+            }
+        });
+        menuOperaciones.add(rotar270grados);
+
+        sumaEscalar.setText("Suma escalar");
+        sumaEscalar.setEnabled(false);
+        menuOperaciones.add(sumaEscalar);
+
+        restaEscalar.setText("Resta escalar");
+        restaEscalar.setEnabled(false);
+        menuOperaciones.add(restaEscalar);
+
+        traslacion.setText("Traslacion");
+        traslacion.setEnabled(false);
+        menuOperaciones.add(traslacion);
+
+        reflejarEjeX.setText("Reflejar eje x");
+        reflejarEjeX.setEnabled(false);
+        menuOperaciones.add(reflejarEjeX);
+
+        reflejarEjeY.setText("Reflejar eje y");
+        reflejarEjeY.setEnabled(false);
+        menuOperaciones.add(reflejarEjeY);
+
+        jMenuBar1.add(menuOperaciones);
+
+        menuVer.setText("Ver");
+        menuVer.setEnabled(false);
+
+        verOriginal.setText("Ver original");
+        menuVer.add(verOriginal);
+
+        jMenuBar1.add(menuVer);
 
         setJMenuBar(jMenuBar1);
 
@@ -187,9 +236,13 @@ public class Principal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void AgregarImagenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarImagenActionPerformed
+    private void abrirImagenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_abrirImagenActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_AgregarImagenActionPerformed
+    }//GEN-LAST:event_abrirImagenActionPerformed
+
+    private void rotar270gradosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rotar270gradosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_rotar270gradosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -227,22 +280,31 @@ public class Principal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public javax.swing.JMenuItem AgregarImagen;
-    public javax.swing.JMenuItem ConvertirGrises;
+    public javax.swing.JMenuItem abrirImagen;
+    public javax.swing.JMenuItem convertirGrises;
     public javax.swing.JButton jButton1;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
     public javax.swing.JLabel jLabel1;
     public javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
     public javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem2;
     public javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     public java.awt.Label labelImagen;
+    public javax.swing.JMenu menuOperaciones;
+    public javax.swing.JMenu menuVer;
     public javax.swing.JPanel panelDerecho;
     public javax.swing.JPanel panelIzquierdo;
+    public javax.swing.JMenuItem reflejarEjeX;
+    public javax.swing.JMenuItem reflejarEjeY;
+    public javax.swing.JMenuItem restaEscalar;
     public javax.swing.JMenuItem rotar180grados;
     public javax.swing.JMenuItem rotar270grados;
     public javax.swing.JMenuItem rotar90Grados;
+    public javax.swing.JMenuItem sumaEscalar;
+    public javax.swing.JMenuItem traslacion;
+    public javax.swing.JMenuItem verOriginal;
     // End of variables declaration//GEN-END:variables
 }

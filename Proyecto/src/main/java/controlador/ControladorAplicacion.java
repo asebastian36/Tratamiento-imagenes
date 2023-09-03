@@ -1,11 +1,11 @@
 package controlador;
 
-import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import modelo.Imagen;
 import modelo.Operaciones;
@@ -22,26 +22,31 @@ public class ControladorAplicacion implements ActionListener {
     private Imagen imagenOriginal;
     private File archivoImagen;
     private Imagen imagenProcesada;
+    private Operaciones op;
 
     public ControladorAplicacion(Principal Ventana) {
         this.ventanaPrincipal = Ventana;
-        this.ventanaPrincipal.AgregarImagen.addActionListener(this);
-        this.ventanaPrincipal.ConvertirGrises.addActionListener(this);
+        this.ventanaPrincipal.abrirImagen.addActionListener(this);
+        this.ventanaPrincipal.convertirGrises.addActionListener(this);
         this.ventanaPrincipal.rotar90Grados.addActionListener(this);
         this.ventanaPrincipal.rotar180grados.addActionListener(this);
         this.ventanaPrincipal.rotar270grados.addActionListener(this);
+        this.ventanaPrincipal.verOriginal.addActionListener(this);
+        this.ventanaPrincipal.sumaEscalar.addActionListener(this);
+        this.ventanaPrincipal.restaEscalar.addActionListener(this);
+        this.ventanaPrincipal.traslacion.addActionListener(this);
+        this.ventanaPrincipal.reflejarEjeX.addActionListener(this);
+        this.ventanaPrincipal.reflejarEjeY.addActionListener(this);
     }
 
     public void actionPerformed(ActionEvent e) {
         if (e.getActionCommand().equals("Abrir imagen")) {
             System.out.println("Seleccionaste Abrir imagen");
 
-            if (this.ventanaPrincipal.jLabel1.getIcon() == null) {
-                this.cargarRGB();
-            }
+            this.cargarRGB();
 
-            this.ventanaPrincipal.ConvertirGrises.setEnabled(true);
-            this.ventanaPrincipal.ConvertirGrises.setVisible(true);
+            this.ventanaPrincipal.menuOperaciones.setEnabled(true);
+            this.ventanaPrincipal.convertirGrises.setEnabled(true);
         } 
         
         if (e.getActionCommand().equals("Convertir a escala de grises")) {
@@ -49,19 +54,24 @@ public class ControladorAplicacion implements ActionListener {
             //  como paso las matrices?
             imagenProcesada = this.imagenOriginal.clone();
             this.cargarGris(this.imagenProcesada.getMatrizR(), this.imagenProcesada.getMatrizG(), this.imagenProcesada.getMatrizB());
-            this.imagenOriginal.convierteMatrizEnBuffered(this.imagenProcesada.getMatrizR());
+            this.imagenProcesada.setBufferImagen(this.imagenOriginal.convierteMatrizEnBuffered(this.imagenProcesada.getMatrizGris()));
+            this.imagenProcesada.setBufferImagen(this.imagenOriginal.getBufferImagen());
             this.ventanaPrincipal.jLabel1.setIcon(new ImageIcon(this.imagenProcesada.getBufferImagen()));
             
+            this.ventanaPrincipal.menuVer.setEnabled(true);
+            this.ventanaPrincipal.verOriginal.setEnabled(true);
             this.ventanaPrincipal.rotar90Grados.setEnabled(true);
-            this.ventanaPrincipal.rotar90Grados.setVisible(true);
             this.ventanaPrincipal.rotar180grados.setEnabled(true);
-            this.ventanaPrincipal.rotar180grados.setVisible(true);
             this.ventanaPrincipal.rotar270grados.setEnabled(true);
-            this.ventanaPrincipal.rotar270grados.setVisible(true);
+            this.ventanaPrincipal.sumaEscalar.setEnabled(true);
+            this.ventanaPrincipal.restaEscalar.setEnabled(true);
+            this.ventanaPrincipal.traslacion.setEnabled(true);
+            this.ventanaPrincipal.reflejarEjeX.setEnabled(true);
+            this.ventanaPrincipal.reflejarEjeY.setEnabled(true);
         }
         
-        if (e.getActionCommand().equals("rotar90grados")) {
-            System.out.println("Seleccionaste rotar90grados");
+        if (e.getActionCommand().equals("Rotar 90 grados")) {
+            System.out.println("Seleccionaste Rotar 90 grados");
             imagenProcesada = this.imagenOriginal.clone();
             Operaciones op = new Operaciones(imagenProcesada);
             imagenProcesada.setMatrizGris(op.rotar90Grados(imagenProcesada.getMatrizGris()));
@@ -69,21 +79,77 @@ public class ControladorAplicacion implements ActionListener {
             this.ventanaPrincipal.jLabel1.setIcon(new ImageIcon(this.imagenProcesada.getBufferImagen()));
         }
         
-        if (e.getActionCommand().equals("rotar180grados")) {
-            System.out.println("Seleccionaste rotar180grados");
+        if (e.getActionCommand().equals("Rotar 180 grados")) {
+            System.out.println("Seleccionaste Rotar 180 grados");
             imagenProcesada = this.imagenOriginal.clone();
-            Operaciones op = new Operaciones(imagenProcesada);
+            op = new Operaciones(imagenProcesada);
             imagenProcesada.setMatrizGris(op.rotar180Grados(imagenProcesada.getMatrizGris()));
             imagenProcesada.convierteMatrizEnBuffered(imagenProcesada.getMatrizGris());
             this.ventanaPrincipal.jLabel1.setIcon(new ImageIcon(this.imagenProcesada.getBufferImagen()));
         }
         
-        if (e.getActionCommand().equals("rotar270grados")) {
-            System.out.println("Seleccionaste rotar270grados");
+        if (e.getActionCommand().equals("Rotar 270 grados")) {
+            System.out.println("Seleccionaste Rotar 270 grados");
             imagenProcesada = this.imagenOriginal.clone();
-            Operaciones op = new Operaciones(imagenProcesada);
+            op = new Operaciones(imagenProcesada);
             imagenProcesada.setMatrizGris(op.rotar270Grados(imagenProcesada.getMatrizGris()));
             imagenProcesada.convierteMatrizEnBuffered(imagenProcesada.getMatrizGris());
+            this.ventanaPrincipal.jLabel1.setIcon(new ImageIcon(this.imagenProcesada.getBufferImagen()));
+        }
+        
+        if(e.getActionCommand().equals("Ver original")) {
+            System.out.println("Seleccionaste Ver original");
+            imagenProcesada = new Imagen(this.archivoImagen);
+            this.ventanaPrincipal.jLabel1.setIcon(new ImageIcon(imagenProcesada.getBufferImagen()));
+        }
+        
+        if (e.getActionCommand().equals("Suma escalar")) {
+            System.out.println("seleccionaste Suma escalar");
+                        
+            short numero = Short.parseShort(JOptionPane.showInputDialog("Introduce un valor para la suma escalar:"));
+            imagenProcesada = this.imagenOriginal.clone();
+            op = new Operaciones(imagenProcesada);
+            imagenProcesada.setMatrizGris(op.sumaEscalar(imagenProcesada.getMatrizGris(), numero));
+            imagenProcesada.setBufferImagen(imagenProcesada.convierteMatrizEnBuffered(imagenProcesada.getMatrizGris()));
+            this.ventanaPrincipal.jLabel1.setIcon(new ImageIcon(this.imagenProcesada.getBufferImagen()));
+        }
+        
+        if (e.getActionCommand().equals("Resta escalar")) {
+            System.out.println("seleccionaste Resta escalar");
+            
+            short numero = Short.parseShort(JOptionPane.showInputDialog("Introduce un valor para la suma escalar:"));
+            imagenProcesada = this.imagenOriginal.clone();
+            op = new Operaciones(imagenProcesada);
+            imagenProcesada.setMatrizGris(op.restaEscalar(imagenProcesada.getMatrizGris(), numero));
+            imagenProcesada.setBufferImagen(imagenProcesada.convierteMatrizEnBuffered(imagenProcesada.getMatrizGris()));
+            this.ventanaPrincipal.jLabel1.setIcon(new ImageIcon(this.imagenProcesada.getBufferImagen()));
+        }
+        
+        if (e.getActionCommand().equals("Traslacion")) {
+            System.out.println("seleccionaste Traslacion");
+            short numero = Short.parseShort(JOptionPane.showInputDialog("Introduce un valor para la traslacion:"));
+            imagenProcesada = this.imagenOriginal.clone();
+            op = new Operaciones(imagenProcesada);
+            imagenProcesada.setMatrizGris(op.traslacion(imagenProcesada.getMatrizGris(), numero));
+            imagenProcesada.setBufferImagen(imagenProcesada.convierteMatrizEnBuffered(imagenProcesada.getMatrizGris()));
+            this.ventanaPrincipal.jLabel1.setIcon(new ImageIcon(this.imagenProcesada.getBufferImagen()));
+        }
+        
+        if (e.getActionCommand().equals("Reflejar eje x")) {
+            System.out.println("seleccionaste Reflejar eje x");
+            imagenProcesada = this.imagenOriginal.clone();
+            Operaciones op = new Operaciones(imagenProcesada);
+            imagenProcesada.setMatrizGris(op.reflejarEjeX(imagenProcesada.getMatrizGris()));
+            imagenProcesada.setBufferImagen(imagenProcesada.convierteMatrizEnBuffered(imagenProcesada.getMatrizGris()));
+            this.ventanaPrincipal.jLabel1.setIcon(new ImageIcon(this.imagenProcesada.getBufferImagen()));
+        }
+        
+        if (e.getActionCommand().equals("Reflejar eje y")) {
+            System.out.println("seleccionaste Reflejar eje y");
+            imagenProcesada = this.imagenOriginal.clone();
+            Operaciones op = new Operaciones(imagenProcesada);
+            imagenProcesada.setMatrizGris(op.reflejarEjeY(imagenProcesada.getMatrizGris()));
+            imagenProcesada.setBufferImagen(imagenProcesada.convierteMatrizEnBuffered(imagenProcesada.getMatrizGris()));
             this.ventanaPrincipal.jLabel1.setIcon(new ImageIcon(this.imagenProcesada.getBufferImagen()));
         }
     }
@@ -119,6 +185,7 @@ public class ControladorAplicacion implements ActionListener {
             }
         }
 
+        this.imagenProcesada.setMatrizGris(matrizResultante);
         this.imagenOriginal.setMatrizGris(matrizResultante);
     }
 }
