@@ -71,15 +71,20 @@ public class Imagen implements Cloneable{
     public BufferedImage convierteMatrizEnBuffered(short matrizGris[][]) {
         short pixelNuevo;
         int pixelSRGB;
-        for (int i = 0; i < this.bufferImagen.getWidth(); i++) {
-            for (int j = 0; j < this.bufferImagen.getHeight(); j++) {
+        int ancho = matrizGris.length;
+        int alto = matrizGris[0].length;
+        
+        BufferedImage bf = new BufferedImage(ancho, alto, BufferedImage.TYPE_INT_RGB);
+        
+        for (int i = 0; i < ancho; i++) {
+            for (int j = 0; j < alto; j++) {
                 pixelNuevo = matrizGris[i][j];
                 pixelSRGB = pixelNuevo << 16 | pixelNuevo << 8 | pixelNuevo;
-                this.bufferImagen.setRGB(i, j, pixelSRGB);
+                bf.setRGB(i, j, pixelSRGB);
             }
         }
         
-        return bufferImagen;
+        return bf;
     }
     
     //  getters y setterss

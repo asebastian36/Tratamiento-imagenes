@@ -68,15 +68,14 @@ public class Operaciones {
     }
 
     public short[][] rotar270Grados() {
-  short[][] resultante = new short[imagen.getMatrizGris().length][imagen.getMatrizGris()[0].length];
-  for (int i = 0; i < imagen.getMatrizGris().length; i++) {
+  short[][] resultante = new short[imagen.getMatrizGris()[0].length][imagen.getMatrizGris().length];
+  for (int i = imagen.getMatrizGris().length - 1; i >= 0; i--) {
     for (int j = 0; j < imagen.getMatrizGris()[0].length; j++) {
-      resultante[i][j] = imagen.getMatrizGris()[j][imagen.getMatrizGris().length - 1 - i];
+      resultante[imagen.getMatrizGris()[0].length - 1 - j][i] = imagen.getMatrizGris()[i][j];
     }
   }
   return resultante;
 }
-
 
     public short[][] sumaEscalar(short recorrido) {
         short[][] resultante = new short[imagen.getMatrizGris().length][imagen.getMatrizGris()[0].length];

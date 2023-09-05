@@ -58,7 +58,6 @@ public class ControladorAplicacion implements ActionListener {
             imagenProcesada = this.imagenOriginal.clone();
             this.cargarGris(this.imagenProcesada.getMatrizR(), this.imagenProcesada.getMatrizG(), this.imagenProcesada.getMatrizB());
             this.imagenProcesada.setBufferImagen(this.imagenOriginal.convierteMatrizEnBuffered(this.imagenProcesada.getMatrizGris()));
-            this.imagenProcesada.setBufferImagen(this.imagenOriginal.getBufferImagen());
             this.ventanaPrincipal.jLabel1.setIcon(new ImageIcon(this.imagenProcesada.getBufferImagen()));
             
             this.ventanaPrincipal.menuVer.setEnabled(true);
