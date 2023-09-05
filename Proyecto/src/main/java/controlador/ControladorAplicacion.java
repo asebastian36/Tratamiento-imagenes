@@ -2,6 +2,8 @@ package controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import static java.awt.image.BufferedImage.TYPE_INT_RGB;
 import java.io.File;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
@@ -18,7 +20,7 @@ import vista.Principal;
 
 public class ControladorAplicacion implements ActionListener {
 
-    private Principal ventanaPrincipal;
+    private final Principal ventanaPrincipal;
     private Imagen imagenOriginal;
     private File archivoImagen;
     private Imagen imagenProcesada;
@@ -39,6 +41,7 @@ public class ControladorAplicacion implements ActionListener {
         this.ventanaPrincipal.reflejarEjeY.addActionListener(this);
     }
 
+    @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getActionCommand().equals("Abrir imagen")) {
             System.out.println("Seleccionaste Abrir imagen");
@@ -73,27 +76,28 @@ public class ControladorAplicacion implements ActionListener {
         if (e.getActionCommand().equals("Rotar 90 grados")) {
             System.out.println("Seleccionaste Rotar 90 grados");
             imagenProcesada = this.imagenOriginal.clone();
-            Operaciones op = new Operaciones(imagenProcesada);
-            imagenProcesada.setMatrizGris(op.rotar90Grados(imagenProcesada.getMatrizGris()));
-            imagenProcesada.convierteMatrizEnBuffered(imagenProcesada.getMatrizGris());
-            this.ventanaPrincipal.jLabel1.setIcon(new ImageIcon(this.imagenProcesada.getBufferImagen()));
+            op = new Operaciones(imagenProcesada);
+            imagenProcesada.setMatrizGris(op.rotar90Grados());
+            imagenProcesada.getBufferImagen().flush();
+            imagenProcesada.setBufferImagen(imagenProcesada.convierteMatrizEnBuffered(imagenProcesada.getMatrizGris()));
+            this.ventanaPrincipal.jLabel1.setIcon(new ImageIcon(imagenProcesada.getBufferImagen()));
         }
         
         if (e.getActionCommand().equals("Rotar 180 grados")) {
             System.out.println("Seleccionaste Rotar 180 grados");
             imagenProcesada = this.imagenOriginal.clone();
             op = new Operaciones(imagenProcesada);
-            imagenProcesada.setMatrizGris(op.rotar180Grados(imagenProcesada.getMatrizGris()));
-            imagenProcesada.convierteMatrizEnBuffered(imagenProcesada.getMatrizGris());
-            this.ventanaPrincipal.jLabel1.setIcon(new ImageIcon(this.imagenProcesada.getBufferImagen()));
+            imagenProcesada.setMatrizGris(op.rotar180Grados());
+            imagenProcesada.setBufferImagen(imagenProcesada.convierteMatrizEnBuffered(imagenProcesada.getMatrizGris()));
+            this.ventanaPrincipal.jLabel1.setIcon(new ImageIcon(imagenProcesada.getBufferImagen()));
         }
         
         if (e.getActionCommand().equals("Rotar 270 grados")) {
             System.out.println("Seleccionaste Rotar 270 grados");
             imagenProcesada = this.imagenOriginal.clone();
             op = new Operaciones(imagenProcesada);
-            imagenProcesada.setMatrizGris(op.rotar270Grados(imagenProcesada.getMatrizGris()));
-            imagenProcesada.convierteMatrizEnBuffered(imagenProcesada.getMatrizGris());
+            imagenProcesada.setMatrizGris(op.rotar270Grados());
+            imagenProcesada.setBufferImagen(imagenProcesada.convierteMatrizEnBuffered(imagenProcesada.getMatrizGris()));
             this.ventanaPrincipal.jLabel1.setIcon(new ImageIcon(this.imagenProcesada.getBufferImagen()));
         }
         
@@ -109,7 +113,7 @@ public class ControladorAplicacion implements ActionListener {
             short numero = Short.parseShort(JOptionPane.showInputDialog("Introduce un valor para la suma escalar:"));
             imagenProcesada = this.imagenOriginal.clone();
             op = new Operaciones(imagenProcesada);
-            imagenProcesada.setMatrizGris(op.sumaEscalar(imagenProcesada.getMatrizGris(), numero));
+            imagenProcesada.setMatrizGris(op.sumaEscalar(numero));
             imagenProcesada.setBufferImagen(imagenProcesada.convierteMatrizEnBuffered(imagenProcesada.getMatrizGris()));
             this.ventanaPrincipal.jLabel1.setIcon(new ImageIcon(this.imagenProcesada.getBufferImagen()));
         }
@@ -120,7 +124,7 @@ public class ControladorAplicacion implements ActionListener {
             short numero = Short.parseShort(JOptionPane.showInputDialog("Introduce un valor para la resta escalar:"));
             imagenProcesada = this.imagenOriginal.clone();
             op = new Operaciones(imagenProcesada);
-            imagenProcesada.setMatrizGris(op.restaEscalar(imagenProcesada.getMatrizGris(), numero));
+            imagenProcesada.setMatrizGris(op.restaEscalar(numero));
             imagenProcesada.setBufferImagen(imagenProcesada.convierteMatrizEnBuffered(imagenProcesada.getMatrizGris()));
             this.ventanaPrincipal.jLabel1.setIcon(new ImageIcon(this.imagenProcesada.getBufferImagen()));
         }
@@ -130,7 +134,7 @@ public class ControladorAplicacion implements ActionListener {
             short numero = Short.parseShort(JOptionPane.showInputDialog("Introduce un valor para la traslacion:"));
             imagenProcesada = this.imagenOriginal.clone();
             op = new Operaciones(imagenProcesada);
-            imagenProcesada.setMatrizGris(op.traslacion(imagenProcesada.getMatrizGris(), numero));
+            imagenProcesada.setMatrizGris(op.traslacion(numero));
             imagenProcesada.setBufferImagen(imagenProcesada.convierteMatrizEnBuffered(imagenProcesada.getMatrizGris()));
             this.ventanaPrincipal.jLabel1.setIcon(new ImageIcon(this.imagenProcesada.getBufferImagen()));
         }
@@ -139,7 +143,7 @@ public class ControladorAplicacion implements ActionListener {
             System.out.println("seleccionaste Reflejar eje x");
             imagenProcesada = this.imagenOriginal.clone();
             Operaciones op = new Operaciones(imagenProcesada);
-            imagenProcesada.setMatrizGris(op.reflejarEjeX(imagenProcesada.getMatrizGris()));
+            imagenProcesada.setMatrizGris(op.reflejarEjeX());
             imagenProcesada.setBufferImagen(imagenProcesada.convierteMatrizEnBuffered(imagenProcesada.getMatrizGris()));
             this.ventanaPrincipal.jLabel1.setIcon(new ImageIcon(this.imagenProcesada.getBufferImagen()));
         }
@@ -148,7 +152,7 @@ public class ControladorAplicacion implements ActionListener {
             System.out.println("seleccionaste Reflejar eje y");
             imagenProcesada = this.imagenOriginal.clone();
             Operaciones op = new Operaciones(imagenProcesada);
-            imagenProcesada.setMatrizGris(op.reflejarEjeY(imagenProcesada.getMatrizGris()));
+            imagenProcesada.setMatrizGris(op.reflejarEjeY());
             imagenProcesada.setBufferImagen(imagenProcesada.convierteMatrizEnBuffered(imagenProcesada.getMatrizGris()));
             this.ventanaPrincipal.jLabel1.setIcon(new ImageIcon(this.imagenProcesada.getBufferImagen()));
         }

@@ -37,7 +37,6 @@ public class Imagen implements Cloneable{
             this.bufferImagen = ImageIO.read(archivoImagen);
             this.cargarImagen(bufferImagen);
         } catch (IOException ex) {
-            ex.printStackTrace();
         }
         
         this.archivoImagen = archivoImagen;
@@ -164,13 +163,13 @@ public class Imagen implements Cloneable{
         this.bufferImagen = bufferImagen;
     }
     
+    @Override
     public Imagen clone() {
         Imagen copia = null;
         
         try {
             copia = (Imagen) super.clone();
         } catch (CloneNotSupportedException ex) {
-            ex.printStackTrace();
         }
         
         return copia;

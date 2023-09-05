@@ -4,7 +4,6 @@ package modelo;
  *
  * @author angel
  */
-
 public class Operaciones {
 
     private Imagen imagen;
@@ -19,54 +18,72 @@ public class Operaciones {
 
     //  Desde este metodo matriz se refiere a una matriz de gris
     //  programar las nuevas funcionalidades aqui!!
-    public short[][] rotar90Grados(short matriz[][]) {
-        //  invertimos tamano y ancho
-        short resultante[][] = new short[matriz[0].length][matriz.length];
+    public short[][] rotar90Grados() {
+        // Calculamos el tamaño de la matriz resultante
+        int filas = imagen.getMatrizGris().length;
+        int columnas = imagen.getMatrizGris()[0].length;
 
-        for (int i = 0; i < matriz[0].length; i++) {
-            for (int j = 0; j < matriz.length; j++) {
-                resultante[i][j] = matriz[j][i];
+        // Comprobamos el tamaño de la matriz original
+        if (filas < columnas) {
+            // Aumentamos el tamaño de la matriz original
+            short[][] matrizOriginalExtendida = new short[filas + columnas - 1][columnas];
+            for (int i = 0; i < filas; i++) {
+                for (int j = 0; j < columnas; j++) {
+                    matrizOriginalExtendida[i][j] = imagen.getMatrizGris()[i][j];
+                }
+            }
+
+            // Rotamos la matriz extendida
+            short[][] matrizRotada = new short[columnas][filas];
+            for (int i = 0; i < columnas; i++) {
+                for (int j = 0; j < filas; j++) {
+                    matrizRotada[i][j] = matrizOriginalExtendida[filas - 1 - j][i];
+                }
+            }
+
+            // Devolvemos la matriz rotada
+            return matrizRotada;
+        } else {
+            // Rotamos la matriz original
+            short[][] matrizRotada = new short[columnas][filas];
+            for (int i = 0; i < filas; i++) {
+                for (int j = 0; j < columnas; j++) {
+                    matrizRotada[j][filas - 1 - i] = imagen.getMatrizGris()[i][j];
+                }
+            }
+
+            // Devolvemos la matriz rotada
+            return matrizRotada;
+        }
+    }
+
+    public short[][] rotar180Grados() {
+        short[][] resultante = new short[imagen.getMatrizGris().length][imagen.getMatrizGris()[0].length];
+        for (int i = 0; i < imagen.getMatrizGris().length; i++) {
+            for (int j = 0; j < imagen.getMatrizGris()[0].length; j++) {
+                resultante[i][j] = imagen.getMatrizGris()[imagen.getMatrizGris().length - 1 - i][imagen.getMatrizGris()[0].length - 1 - j];
             }
         }
-
         return resultante;
     }
 
-    public short[][] rotar180Grados(short matriz[][]) {
-        short[][] resultante = new short[matriz[0].length][matriz.length];
-        for (int i = 0; i < matriz.length; i++) {
-            for (int j = 0; j < matriz[0].length; j++) {
-                resultante[i][j] = matriz[matriz.length - 1 - i][matriz[0].length - 1 - j];
-            }
-        }
-        return resultante;
+    public short[][] rotar270Grados() {
+  short[][] resultante = new short[imagen.getMatrizGris().length][imagen.getMatrizGris()[0].length];
+  for (int i = 0; i < imagen.getMatrizGris().length; i++) {
+    for (int j = 0; j < imagen.getMatrizGris()[0].length; j++) {
+      resultante[i][j] = imagen.getMatrizGris()[j][imagen.getMatrizGris().length - 1 - i];
     }
+  }
+  return resultante;
+}
 
-    public static short[][] rotar270Grados(short matriz[][]) {
-        // Declaramos una matriz de la misma dimensión que la matriz original
-        short[][] resultante = new short[matriz[0].length][matriz.length];
 
-        // Recorremos la matriz original
-        for (int i = 0; i < matriz.length; i++) {
-            for (int j = 0; j < matriz[0].length; j++) {
-                // Obtenemos el valor del elemento original
-                short valor = matriz[j][matriz.length - 1 - i];
+    public short[][] sumaEscalar(short recorrido) {
+        short[][] resultante = new short[imagen.getMatrizGris().length][imagen.getMatrizGris()[0].length];
 
-                // Almacenamos el valor en la matriz resultante en la posición opuesta
-                resultante[i][j] = valor;
-            }
-        }
-
-        // Devolvemos la matriz resultante
-        return resultante;
-    }
-
-    public short[][] sumaEscalar(short matriz[][], short recorrido) {
-        short[][] resultante = new short[matriz.length][matriz[0].length];
-
-        for (int i = 0; i < matriz.length; i++) {
-            for (int j = 0; j < matriz[0].length; j++) {
-                short resultado = (short) (matriz[i][j] + recorrido);
+        for (int i = 0; i < imagen.getMatrizGris().length; i++) {
+            for (int j = 0; j < imagen.getMatrizGris()[0].length; j++) {
+                short resultado = (short) (imagen.getMatrizGris()[i][j] + recorrido);
 
                 if (resultado > 255) {
                     resultante[i][j] = (short) 255;
@@ -79,12 +96,12 @@ public class Operaciones {
         return resultante;
     }
 
-    public short[][] restaEscalar(short matriz[][], short recorrido) {
-        short[][] resultante = new short[matriz.length][matriz[0].length];
+    public short[][] restaEscalar(short recorrido) {
+        short[][] resultante = new short[imagen.getMatrizGris().length][imagen.getMatrizGris()[0].length];
 
-        for (int i = 0; i < matriz.length; i++) {
-            for (int j = 0; j < matriz[0].length; j++) {
-                short resultado = (short) (matriz[i][j] - recorrido);
+        for (int i = 0; i < imagen.getMatrizGris().length; i++) {
+            for (int j = 0; j < imagen.getMatrizGris()[0].length; j++) {
+                short resultado = (short) (imagen.getMatrizGris()[i][j] - recorrido);
 
                 if (resultado < 0) {
                     resultante[i][j] = (short) 0;
@@ -97,19 +114,19 @@ public class Operaciones {
         return resultante;
     }
 
-    public short[][] traslacion(short[][] matriz, int translacion) {
+    public short[][] traslacion(int translacion) {
         // Calculamos el tamaño de la matriz resultante
-        int filas = matriz.length + Math.abs(translacion);
-        int columnas = matriz[0].length;
+        int filas = imagen.getMatrizGris().length + Math.abs(translacion);
+        int columnas = imagen.getMatrizGris()[0].length;
 
         // Declaramos la matriz resultante
         short[][] resultante = new short[filas][columnas];
 
         // Recorremos la matriz original
-        for (int i = 0; i < matriz.length; i++) {
-            for (int j = 0; j < matriz[0].length; j++) {
+        for (int i = 0; i < imagen.getMatrizGris().length; i++) {
+            for (int j = 0; j < imagen.getMatrizGris()[0].length; j++) {
                 // Obtenemos el valor del elemento original
-                short valor = matriz[i][j];
+                short valor = imagen.getMatrizGris()[i][j];
 
                 // Aplicamos la traslación
                 resultante[(i + translacion) % filas][(j + translacion) % columnas] = (j + translacion) >= columnas ? 0 : valor;
@@ -120,18 +137,18 @@ public class Operaciones {
         return resultante;
     }
 
-    public short[][] reflejarEjeX(short matriz[][]) {
+    public short[][] reflejarEjeX() {
         // Declaramos una matriz de la misma dimensión que la matriz original
-        short[][] matrizReflejada = new short[matriz.length][matriz[0].length];
+        short[][] matrizReflejada = new short[imagen.getMatrizGris().length][imagen.getMatrizGris()[0].length];
 
         // Recorremos la matriz original
-        for (int i = 0; i < matriz.length; i++) {
-            for (int j = 0; j < matriz[0].length; j++) {
+        for (int i = 0; i < imagen.getMatrizGris().length; i++) {
+            for (int j = 0; j < imagen.getMatrizGris()[0].length; j++) {
                 // Obtenemos el valor del elemento original
-                int valor = matriz[i][j];
+                int valor = imagen.getMatrizGris()[i][j];
 
                 // Almacenamos el valor en la matriz reflejada en la posición opuesta
-                matrizReflejada[i][matriz[0].length - j - 1] = (short) valor;
+                matrizReflejada[i][imagen.getMatrizGris()[0].length - j - 1] = (short) valor;
             }
         }
 
@@ -139,18 +156,18 @@ public class Operaciones {
         return matrizReflejada;
     }
 
-    public short[][] reflejarEjeY(short matriz[][]) {
+    public short[][] reflejarEjeY() {
         // Declaramos una matriz de la misma dimensión que la matriz original
-        short[][] matrizReflejada = new short[matriz.length][matriz[0].length];
+        short[][] matrizReflejada = new short[imagen.getMatrizGris().length][imagen.getMatrizGris()[0].length];
 
         // Recorremos la matriz original
-        for (int i = 0; i < matriz.length; i++) {
-            for (int j = 0; j < matriz[0].length; j++) {
+        for (int i = 0; i < imagen.getMatrizGris().length; i++) {
+            for (int j = 0; j < imagen.getMatrizGris()[0].length; j++) {
                 // Obtenemos el valor del elemento original
-                int valor = matriz[i][j];
+                int valor = imagen.getMatrizGris()[i][j];
 
                 // Almacenamos el valor en la matriz reflejada en la posición opuesta
-                matrizReflejada[matriz.length - i - 1][j] = (short) valor;
+                matrizReflejada[imagen.getMatrizGris().length - i - 1][j] = (short) valor;
             }
         }
 
