@@ -4,6 +4,7 @@ package modelo;
  *
  * @author angel
  */
+
 public class Operaciones {
 
     private Imagen imagen;
@@ -68,14 +69,14 @@ public class Operaciones {
     }
 
     public short[][] rotar270Grados() {
-  short[][] resultante = new short[imagen.getMatrizGris()[0].length][imagen.getMatrizGris().length];
-  for (int i = imagen.getMatrizGris().length - 1; i >= 0; i--) {
-    for (int j = 0; j < imagen.getMatrizGris()[0].length; j++) {
-      resultante[imagen.getMatrizGris()[0].length - 1 - j][i] = imagen.getMatrizGris()[i][j];
+        short[][] resultante = new short[imagen.getMatrizGris()[0].length][imagen.getMatrizGris().length];
+        for (int i = imagen.getMatrizGris().length - 1; i >= 0; i--) {
+            for (int j = 0; j < imagen.getMatrizGris()[0].length; j++) {
+                resultante[imagen.getMatrizGris()[0].length - 1 - j][i] = imagen.getMatrizGris()[i][j];
+            }
+        }
+        return resultante;
     }
-  }
-  return resultante;
-}
 
     public short[][] sumaEscalar(short recorrido) {
         short[][] resultante = new short[imagen.getMatrizGris().length][imagen.getMatrizGris()[0].length];
@@ -174,4 +175,36 @@ public class Operaciones {
         return matrizReflejada;
     }
 
+    public short[][] suma(short[][] matriz) {
+        short [][] matrizResultante = new short [matriz.length][matriz[0].length];
+        if (matriz.length == this.imagen.getColumnas() && matriz[0].length == this.imagen.getFilas()) {
+            
+            for (int i = 0; i < matriz.length; i++) {
+                for (int j = 0; j < matriz[0].length; j++) {
+                    int suma = 0;
+                    suma = (this.imagen.getMatrizGris()[i][j] + matriz[i][j]) / 2;
+                    if (suma > 255) suma = 255;
+                    matrizResultante[i][j] = (short) suma;
+                }
+            }
+        }
+        
+        return matrizResultante;
+    }
+    
+    public short[][] resta(short[][] matriz) {
+        short [][] matrizResultante = new short [matriz.length][matriz[0].length];
+        if (matriz.length == this.imagen.getColumnas() && matriz[0].length == this.imagen.getFilas()) {
+            for (int i = 0; i < matriz.length; i++) {
+                for (int j = 0; j < matriz[0].length; j++) {
+                    int resta = 0;
+                    resta = this.imagen.getMatrizGris()[i][j] - matriz[i][j];
+                    if (resta < 0) resta = resta * -1;
+                    matrizResultante[i][j] = (short) resta;
+                }
+            }
+        }
+        
+        return matrizResultante;
+    }
 }

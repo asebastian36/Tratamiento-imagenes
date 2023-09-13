@@ -53,6 +53,8 @@ public class Principal extends javax.swing.JFrame {
         traslacion = new javax.swing.JMenuItem();
         reflejarEjeX = new javax.swing.JMenuItem();
         reflejarEjeY = new javax.swing.JMenuItem();
+        suma = new javax.swing.JMenuItem();
+        resta = new javax.swing.JMenuItem();
         menuVer = new javax.swing.JMenu();
         verOriginal = new javax.swing.JMenuItem();
 
@@ -206,6 +208,14 @@ public class Principal extends javax.swing.JFrame {
         reflejarEjeY.setEnabled(false);
         menuOperaciones.add(reflejarEjeY);
 
+        suma.setText("Suma");
+        suma.setEnabled(false);
+        menuOperaciones.add(suma);
+
+        resta.setText("Resta");
+        resta.setEnabled(false);
+        menuOperaciones.add(resta);
+
         jMenuBar1.add(menuOperaciones);
 
         menuVer.setText("Ver");
@@ -299,10 +309,12 @@ public class Principal extends javax.swing.JFrame {
     public javax.swing.JPanel panelIzquierdo;
     public javax.swing.JMenuItem reflejarEjeX;
     public javax.swing.JMenuItem reflejarEjeY;
+    public javax.swing.JMenuItem resta;
     public javax.swing.JMenuItem restaEscalar;
     public javax.swing.JMenuItem rotar180grados;
     public javax.swing.JMenuItem rotar270grados;
     public javax.swing.JMenuItem rotar90Grados;
+    public javax.swing.JMenuItem suma;
     public javax.swing.JMenuItem sumaEscalar;
     public javax.swing.JMenuItem traslacion;
     public javax.swing.JMenuItem verOriginal;
